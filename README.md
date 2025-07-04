@@ -135,7 +135,7 @@ MIT License
 
 Автор: Alexandr Fedosov
 E-mail: alexfedosov1985@gmail.com
-Telegram: @aufed
+Telegram: @Aufed
 
 ---
 
