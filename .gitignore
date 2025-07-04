@@ -5,7 +5,11 @@ build/
 dist/
 wheels/
 *.egg-info
-
+quotes.db
+best_quotes.pdf
+*.pdf
+*.db
 # Virtual environments
 .venv
 .env
+
