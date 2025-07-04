@@ -2,6 +2,8 @@ import sqlite3
 import logging
 from datetime import datetime
 from app.book import Book_quotes
+import os
+from db.db_init import init_database
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -15,6 +17,8 @@ def db_fill_in(book_quotes: Book_quotes) -> None:
         book_quotes (Book_quotes): An instance of Book_quotes containing quotes to be added
     """
     db_path = "quotes.db"
+    if not os.path.exists(db_path):
+        init_database()
     conn = None
     
     try:

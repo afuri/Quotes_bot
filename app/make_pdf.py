@@ -25,6 +25,24 @@ def make_pdf(output_path="best_quotes.pdf"):
         return None
     pdfmetrics.registerFont(TTFont(font_name, font_path))
 
+    # Check if database exists
+    if not os.path.exists("quotes.db"):
+        # Setup PDF
+        doc = SimpleDocTemplate(output_path, pagesize=A4, rightMargin=2*cm, leftMargin=2*cm, topMargin=2*cm, bottomMargin=2*cm)
+        story = []
+        styles = getSampleStyleSheet()
+        quote_style = ParagraphStyle(
+            'Quote',
+            parent=styles['Normal'],
+            fontName=font_name,
+            fontSize=14,
+            leading=18,
+            spaceAfter=12,
+        )
+        story.append(Paragraph("No best quotes found.", quote_style))
+        doc.build(story)
+        return output_path
+
     # Connect to the database
     conn = sqlite3.connect("quotes.db")
     cursor = conn.cursor()
