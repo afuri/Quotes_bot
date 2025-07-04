@@ -161,8 +161,12 @@ async def set_period(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
         
         if choice in PERIODS:
             user_preferences[user_id] = PERIODS[choice]
-            # Restore the "Get a Random Quote" button
-            keyboard = [[KeyboardButton("📚 Get a Random Quote")]]
+            # Restore all main buttons as in /start
+            keyboard = [
+                [KeyboardButton("📚 Get a Random Quote")],
+                [KeyboardButton("➕ Add quotes")],
+                [KeyboardButton("🏆 Best_quotes")]
+            ]
             reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
             await update.message.reply_text(
                 f'Great! You will receive quotes {PERIODS[choice]["name"].lower()}.',
