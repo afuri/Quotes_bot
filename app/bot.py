@@ -36,10 +36,10 @@ WAITING_MD_FILE = 2
 # Period options
 PERIODS = {
     '0': {'name': 'Every minute', 'times': None},  # None indicates every minute mode
-    '1': {'name': 'Once a day', 'times': ['8:00']},
-    '2': {'name': 'Twice a day', 'times': ['8:00', '20:00']},
-    '3': {'name': 'Three times a day', 'times': ['8:00', '15:00', '20:00']},
-    '4': {'name': 'Four times a day', 'times': ['8:00', '12:00', '16:00', '20:00']}
+    '1': {'name': 'Once a day', 'times': ['08:00']},
+    '2': {'name': 'Twice a day', 'times': ['08:00', '20:00']},
+    '3': {'name': 'Three times a day', 'times': ['08:00', '15:00', '20:00']},
+    '4': {'name': 'Four times a day', 'times': ['08:00', '12:00', '16:00', '20:00']}
 }
 
 # Store user preferences
@@ -179,7 +179,7 @@ async def set_period(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
 
 async def send_quote(context: ContextTypes.DEFAULT_TYPE) -> None:
     """Send a random quote to users based on their schedule."""
-    current_time = f'{datetime.now().time().hour}:{datetime.now().time().minute}'
+    current_time = datetime.now().strftime('%H:%M')
     
     for user_id, preferences in user_preferences.items():
         # If times is None, it means "every minute" mode

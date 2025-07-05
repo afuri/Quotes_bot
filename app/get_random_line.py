@@ -61,7 +61,7 @@ def get_random_quote():
             new_last_seen = current_time + timedelta(hours=168)
             
             # Update last_seen using modify_cell function
-            # modify_cell(result[0], 'last_seen', new_last_seen)
+            modify_cell(result[0], 'last_seen', new_last_seen)
             
             return json.dumps(quote_dict, ensure_ascii=False)
         else:
